@@ -48,9 +48,10 @@ describe String do
   # remove the 'x' before running this test
   context 'when favorite food is updated' do
     # Change the favorite_food let variable.
-
-    xit 'updates the favorite food' do
+    let(:favorite_food) { 'pizza' }
+    it 'updates the favorite food' do
       # Write a test that will pass.
+      expect(favorite_food).to eql('pizza')
     end
   end
 end
