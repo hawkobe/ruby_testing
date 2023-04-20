@@ -70,34 +70,66 @@ describe MagicSeven do
   # Write a test for each of the following methods:
 
   describe '#subtract_four' do
+    context 'when the previous step is 10' do
+      it 'returns 6' do
+        previous_step = 10
+        result = game.subtract_four(10)
+        expect(result).to eq(6)
+      end
+    end
   end
 
   describe '#divide_by_two' do
+    context 'when the previous step is 20' do
+      it 'returns 10' do
+        previous_step = 20
+        result = game.divide_by_two(previous_step)
+        expect(result).to eq(10)
+      end
+    end
   end
 
   # The following tests will need you to create new instances of MagicSeven with
   # a specific value for the random_number.
   describe '#subtract_random_number' do
+    context 'when the random number is 25 and previous step is 32' do
+      subject(:new_game) { described_class.new(25) }
+
+      it 'returns 7' do
+        previous_step = 32
+        result = new_game.subtract_random_number(32)
+        expect(result).to eq(7)
+      end
+    end
   end
 
   # The #play method will always return seven! Test this game, using any
   # integer as the random_number. Update the context with the number.
   describe '#play' do
-    context 'when the random number is ...' do
+    context 'when the random number is 47' do
       # remove the 'x' before running this test
-      xit 'will return 7' do
+      let(:game_fortyseven) { described_class.new(47) }
+
+      it 'will return 7' do
+        game_fortyseven.play
       end
     end
 
-    context 'when the random number is ...' do
+    context 'when the random number is 1' do
       # remove the 'x' before running this test
-      xit 'will return 7' do
+      let(:game_one) { described_class.new(1) }
+      
+      it 'will return 7' do
+        game_one.play
       end
     end
 
-    context 'when the random number is ...' do
+    context 'when the random number is 100' do
       # remove the 'x' before running this test
-      xit 'will return 7' do
+      let(:game_onehundred) { described_class.new(100) }
+
+      it 'will return 7' do
+        game_onehundred.play
       end
     end
   end
