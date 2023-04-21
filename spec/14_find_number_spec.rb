@@ -114,7 +114,7 @@ describe FindNumber do
     # Create a random_number double called 'number_guessing'. Allow the double
     # to receive 'value' and return the value of 8, in one of the two ways
     # explained above.
-
+    let(:number_guessing) { double('random_number', value: 8) }
     subject(:game_guessing) { described_class.new(0, 9, number_guessing) }
 
     # Before you write the #make_guess method:
@@ -123,7 +123,10 @@ describe FindNumber do
     # It will fail with an undefined method error because you haven't
     # written #make_guess yet!
     context 'when min is 0 and max is 9' do
-      xit 'returns 4' do
+      it 'returns 4' do
+        average = 4
+        calculated_average = game_guessing.make_guess
+        expect(calculated_average).to eq(average)
       end
     end
 
@@ -136,22 +139,42 @@ describe FindNumber do
     # random number double created inside this method's describe block.
 
     context 'when min is 5 and max is 9' do
-      xit 'returns 7' do
+      subject(:game_guessing) { described_class.new(5, 9, number_guessing) }
+
+      it 'returns 7' do
+        average = 7
+        calculated_average = game_guessing.make_guess
+        expect(calculated_average).to eq(average)
       end
     end
 
     context 'when min is 8 and max is 9' do
-      xit 'returns 8' do
+      subject(:game_guessing) { described_class.new(8, 9, number_guessing) }
+
+      it 'returns 8' do
+        average = 8
+        calculated_average = game_guessing.make_guess
+        expect(calculated_average).to eq(average)
       end
     end
 
     context 'when min is 0 and max is 3' do
-      xit 'returns 1' do
+      subject(:game_guessing) { described_class.new(0, 3, number_guessing) }
+
+      it 'returns 1' do
+        average = 1
+        calculated_average = game_guessing.make_guess
+        expect(calculated_average).to eq(average)
       end
     end
 
     context 'when min and max both equal 3' do
-      xit 'returns 3' do
+      subject(:game_guessing) { described_class.new(3, 3, number_guessing) }
+
+      it 'returns 3' do
+        average = 3
+        calculated_average = game_guessing.make_guess
+        expect(calculated_average).to eq(average)
       end
     end
   end
