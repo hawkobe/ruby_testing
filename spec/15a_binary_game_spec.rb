@@ -169,16 +169,26 @@ describe BinaryGame do
   describe '#verify_input' do
     # Located inside #player_input (Looping Script Method)
     # Query Method -> Test the return value
-
+    subject(:game_verify_return) { described_class.new(1, 30) }
     # Note: #verify_input will only return a number if it is between?(min, max)
 
     context 'when given a valid input as argument' do
-      xit 'returns valid input' do
+      it 'returns valid input' do
+        user_number = 5
+        min = game_verify_return.instance_variable_get(:@minimum)
+        max = game_verify_return.instance_variable_get(:@maximum)
+        return_value = game_verify_return.verify_input(min, max, user_number)
+        expect(return_value).to eq(user_number)
       end
     end
 
     context 'when given invalid input as argument' do
-      xit 'returns nil' do
+      it 'returns nil' do
+        user_number = 400
+        min = game_verify_return.instance_variable_get(:@minimum)
+        max = game_verify_return.instance_variable_get(:@maximum)
+        return_value = game_verify_return.verify_input(min, max, user_number)
+        expect(return_value).to be_nil
       end
     end
   end
