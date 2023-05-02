@@ -370,22 +370,25 @@ describe BinaryGame do
     before do
       # You'll need to create a few method stubs.
       allow(search_display).to receive(:make_guess)
+      allow(search_display).to receive(:update_range)
+      allow(game_display_order).to receive(:display_guess)
     end
 
     # Command Method -> Test the change in the observable state
     it 'increases guess_count by one' do
-      count = game_display_order.instance_variable_get(:@count)
+      expect { game_display_order.display_turn_order(search_display) }.to change { game_display_order.instance_variable_get(:@guess_count) }.by(1)
+    end
+
+    # Method with Outgoing Command -> Test that a message is sent
+    it 'sends make_guess' do
+      expect(search_display).to receive(:make_guess).once
       game_display_order.display_turn_order(search_display)
-      updated_count = game_display_order.instance_variable_get(:@count)
-      expect(count).to eq(updated_count)
     end
 
     # Method with Outgoing Command -> Test that a message is sent
-    xit 'sends make_guess' do
-    end
-
-    # Method with Outgoing Command -> Test that a message is sent
-    xit 'sends update_range' do
+    it 'sends update_range' do
+      expect(search_display).to receive(:update_range).once
+      game_display_order.display_turn_order(search_display)
     end
 
     # Using method expectations can be confusing. Stubbing the methods above
