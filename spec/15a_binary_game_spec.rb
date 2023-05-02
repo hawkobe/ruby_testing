@@ -364,13 +364,20 @@ describe BinaryGame do
     #  by calling #display_guess.
 
     # Create a new subject and an instance_double for BinarySearch.
+    subject(:game_display_order) { described_class.new(1, 100) }
+    let(:search_display) { instance_double(BinarySearch) }
 
     before do
       # You'll need to create a few method stubs.
+      allow(search_display).to receive(:make_guess)
     end
 
     # Command Method -> Test the change in the observable state
-    xit 'increases guess_count by one' do
+    it 'increases guess_count by one' do
+      count = game_display_order.instance_variable_get(:@count)
+      game_display_order.display_turn_order(search_display)
+      updated_count = game_display_order.instance_variable_get(:@count)
+      expect(count).to eq(updated_count)
     end
 
     # Method with Outgoing Command -> Test that a message is sent
