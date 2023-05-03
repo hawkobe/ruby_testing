@@ -372,6 +372,7 @@ describe BinaryGame do
       allow(search_display).to receive(:make_guess)
       allow(search_display).to receive(:update_range)
       allow(game_display_order).to receive(:display_guess)
+      # allow(search_display).to receive(:game_over?)
     end
 
     # Command Method -> Test the change in the observable state
@@ -399,7 +400,6 @@ describe BinaryGame do
     # #display_turn_order. Uncomment the line at the bottom of this
     # paragraph, move it to the before hook, and run the tests.
     # All of the tests should continue to pass.
-    # allow(binary_search_turn).to receive(:game_over?)
 
     # Now, in the lib/15a_binary_game.rb file, comment out either line,
     # binary_search.make_guess or binary_search.update_range. Resave the file
